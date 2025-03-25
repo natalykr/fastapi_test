@@ -14,5 +14,6 @@ jobs:
         run: docker build . -t natalykr/dockerfile:latest
       - name: push image to docker hub
         run: |
+          docker login -u natalykr -p ${{ secrets.DOCKER_HUB_TOKEN }}
           docker push natalykr/dockerfile:latest
           
