@@ -14,5 +14,5 @@ jobs:
         run: docker build . -t Dockerfile:latest
       - name: push image to docker hub
         run: |
-          docker push Dockerfile:latest
+          docker push dockerfile:latest
           
