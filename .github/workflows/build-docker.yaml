@@ -11,8 +11,8 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - name: build image
-        run: docker build . -t dockerfile:latest
+        run: docker build . -t natalykr/dockerfile:latest
       - name: push image to docker hub
         run: |
-          docker push dockerfile:latest
+          docker push natalykr/dockerfile:latest
           
