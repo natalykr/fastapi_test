@@ -1,0 +1,29 @@
+name: Run Docker Compose
+
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker-compose.yml"
+
+      - name: Create .env file
+        run: |
+          touch .env
+          echo PG_USER=${{ secrets.PG_USER }} >> .env
+          echo PG_PASS=${{ secrets.PG_PASS }} >> .env
+          echo PG_NAME=${{ secrets.PG_NAME }} >> .env
+          echo PG_HOST=${{ secrets.PG_HOST }} >> .env
+          echo PG_PORT=${{ secrets.PG_PORT }} >> .env
+          cat .env
+
+      - name: Run docker compose
+        run: |
+          docker compose up --build
+
