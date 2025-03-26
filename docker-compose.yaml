@@ -1,17 +1,17 @@
 services:
-  backend:
-    image: game_of_tasks
-    build:
-      context: .
-    depends_on:
-      postgres:
-          condition: service_healthy
-    environment:
-      PG_PASS: ${PG_PASS}
-      PG_USER: ${PG_USER}
-      PG_NAME: ${PG_NAME}
-    ports:
-      - "80:80"
+#  backend:
+#    image: game_of_tasks
+#    build:
+#      context: .
+#    depends_on:
+#      postgres:
+#          condition: service_healthy
+#    environment:
+#      PG_PASS: ${PG_PASS}
+#      PG_USER: ${PG_USER}
+#      PG_NAME: ${PG_NAME}
+#    ports:
+#      - "80:80"
   postgres:
     image: postgres:16.0
     container_name: postgres_container
