@@ -7,9 +7,9 @@ services:
       postgres:
           condition: service_healthy
     environment:
-      POSTGRES_PASSWORD: 12345
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
+      PG_PASS: 12345
+      PG_USER: postgres
+      PG_NAME: postgres
     ports:
       - "80:80"
   postgres:
