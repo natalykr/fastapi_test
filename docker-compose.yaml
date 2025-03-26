@@ -7,18 +7,18 @@ services:
       postgres:
           condition: service_healthy
     environment:
-      PG_PASS: 12345
-      PG_USER: postgres
-      PG_NAME: postgres
+      PG_PASS: ${PG_PASS}
+      PG_USER: ${PG_USER}
+      PG_NAME: ${PG_NAME}
     ports:
       - "80:80"
   postgres:
     image: postgres:16.0
     container_name: postgres_container
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${PG_PASS}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_DB: ${PG_NAME}
       PGDATA: /var/lib/postgresql/data/pgdata
     healthcheck:
       test: ["CMD-SHELL", 'pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}']
