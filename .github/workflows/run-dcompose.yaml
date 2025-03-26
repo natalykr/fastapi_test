@@ -8,11 +8,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run docker compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "./docker-compose.yml"
-
       - name: Create .env file
         run: |
           touch .env
@@ -22,6 +17,11 @@ jobs:
           echo PG_HOST=${{ secrets.PG_HOST }} >> .env
           echo PG_PORT=${{ secrets.PG_PORT }} >> .env
           cat .env
+
+      - name: Run docker compose
+        uses: hoverkraft-tech/compose-action@v2.0.1
+        with:
+          compose-file: "./docker-compose.yaml"
 
       - name: Run docker compose
         run: |
